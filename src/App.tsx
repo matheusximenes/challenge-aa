@@ -14,15 +14,16 @@ function App() {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        // const response = await fetch(
-        //   "https://agencyanalytics-api.vercel.app/images.json",
-        //   {
-        const response = await fetch("./images.json", {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        });
+        const response = await fetch(
+          "https://agencyanalytics-api.vercel.app/images.json",
+          {
+            // const response = await fetch("./images.json", {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        );
         const photos = await response.json();
         dispatch(setPhotos(photos));
       } catch (error) {
