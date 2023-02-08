@@ -1,7 +1,7 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Tabs from "../components/Tabs";
-import ReduxProvider from "../components/ReduxProvider";
+import Tabs from "../../components/Tabs";
+import ReduxProvider from "../../components/ReduxProvider";
 
 describe("<Tabs/> Component", () => {
   beforeEach(() => {

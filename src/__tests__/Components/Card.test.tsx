@@ -1,8 +1,8 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import Card from "../components/Card";
-import { formatBytes } from "../libs/files";
-import ReduxProvider from "../components/ReduxProvider";
+import Card from "../../components/Card";
+import { formatBytes } from "../../libs/files";
+import ReduxProvider from "../../components/ReduxProvider";
 
 const CardProps = {
   id: "74957345-6f5b-4d66-ae9d-5d0071b40279",
