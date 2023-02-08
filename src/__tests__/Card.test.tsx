@@ -1,9 +1,8 @@
 import { describe, expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
-import Card from "./Card";
-import { Provider } from "react-redux";
-import { store } from "../store";
+import Card from "../components/Card";
 import { formatBytes } from "../libs/files";
+import ReduxProvider from "../components/ReduxProvider";
 
 const CardProps = {
   id: "74957345-6f5b-4d66-ae9d-5d0071b40279",
@@ -15,23 +14,21 @@ const CardProps = {
 };
 
 describe("<Card/> Component", () => {
+  beforeEach(() => {
+    render(
+      <ReduxProvider>
+        <Card {...CardProps} />
+      </ReduxProvider>
+    );
+  });
+
   describe("rendering", () => {
-    test("should show correct title", () => {
-      render(
-        <Provider store={store}>
-          <Card {...CardProps} />
-        </Provider>
-      );
+    it("should show correct title", () => {
       const cardTitle = screen.getByText(/tennessee_female_rubber.jpg/i);
       expect(cardTitle).toBeDefined();
     });
 
-    test("should show correct sizeInBites", () => {
-      render(
-        <Provider store={store}>
-          <Card {...CardProps} />
-        </Provider>
-      );
+    it("should show correct sizeInBites", () => {
       const sizeInBytes = formatBytes(CardProps.sizeInBytes);
       const cardTitle = screen.getByText(sizeInBytes);
       expect(cardTitle).toBeDefined();
@@ -39,12 +36,7 @@ describe("<Card/> Component", () => {
   });
 
   describe("A11y", () => {
-    test("Aria-label in images", () => {
-      render(
-        <Provider store={store}>
-          <Card {...CardProps} />
-        </Provider>
-      );
+    it("Aria-label in images", () => {
       const button = screen.getByRole("button");
       expect(button).toBeDefined();
     });

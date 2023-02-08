@@ -17,20 +17,20 @@ const Card = ({ id, url, description, filename, sizeInBytes }: PropsCard) => {
   return (
     <div className="card">
       <button
-        className={`card-btn ${
-          state.selectedPhoto?.id === id ? `card-btn--active` : ``
+        className={`card__btn ${
+          state.selectedPhoto?.id === id ? `card__btn--active` : ``
         }`}
         onClick={() => dispatch(setSelectedPhoto({ id: id }))}
         aria-label={`Open ${filename} Image Details`}
       >
         <img
-          className="card-img"
+          className="card__img"
           src={url}
           alt={description || "no description provided"}
         />
       </button>
-      <div className="card-title">{filename}</div>
-      <div className="card-bytes"> {formatBytes(sizeInBytes)}</div>
+      <div className="card__title">{filename}</div>
+      <div className="card__bytes"> {formatBytes(sizeInBytes)}</div>
     </div>
   );
 };

@@ -111,7 +111,7 @@ button:hover {
   padding: 0.5rem;
 }
 
-.card-btn {
+.card__btn {
   width: inherit;
   height: 150px;
   border-radius: 1.2rem;
@@ -121,34 +121,34 @@ button:hover {
   align-items: center;
 }
 
-.card-btn img {
+.card__btn img {
   min-height: 100%;
   min-width: 100%;
   object-fit: cover;
 }
 
-.card-btn:hover {
+.card__btn:hover {
   outline-offset: 0.2rem;
   outline: 2px solid #cbd5e1;
 }
 
-.card-btn:hover img {
+.card__btn:hover img {
   opacity: 0.8;
 }
 
-.card-btn--active,
-.card-btn--active:hover {
+.card__btn--active,
+.card__btn--active:hover {
   outline-offset: 0.2rem;
   outline: 2px solid #4f45e4;
 }
 
-.card-title {
+.card__title {
   width: inherit;
   overflow-wrap: break-word;
   font-weight: 700;
 }
 
-.card-bytes {
+.card__bytes {
   color: #64748b;
 }
 /* End --> Cards Section */

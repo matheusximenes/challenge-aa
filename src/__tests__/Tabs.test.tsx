@@ -1,29 +1,25 @@
 import { describe, expect, test } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Tabs from "./Tabs";
-import { Provider } from "react-redux";
-import { store } from "../store";
+import Tabs from "../components/Tabs";
+import ReduxProvider from "../components/ReduxProvider";
 
 describe("<Tabs/> Component", () => {
+  beforeEach(() => {
+    render(
+      <ReduxProvider>
+        <Tabs />
+      </ReduxProvider>
+    );
+  });
   describe("rendering", () => {
-    test("should show two tabs", () => {
-      render(
-        <Provider store={store}>
-          <Tabs />
-        </Provider>
-      );
+    it("should show two tabs", () => {
       const tabs = screen.getAllByRole("tab");
       expect(tabs.length).toBe(2);
     });
   });
 
   describe("features", () => {
-    test("Switching tabs", () => {
-      render(
-        <Provider store={store}>
-          <Tabs />
-        </Provider>
-      );
+    it("Switching tabs", () => {
       const allTabs = screen.getAllByRole("tab");
       const tabs = screen.getAllByRole("tab", {
         selected: true,
@@ -40,12 +36,7 @@ describe("<Tabs/> Component", () => {
   });
 
   describe("A11y", () => {
-    test("Aria-label in images", () => {
-      render(
-        <Provider store={store}>
-          <Tabs />
-        </Provider>
-      );
+    it("Aria-label in images", () => {
       const tabs = screen.getAllByRole("tab", { selected: true });
       expect(tabs.length).toBe(1);
     });
