@@ -155,6 +155,7 @@ button:hover {
 
 /* Start - Image Details */
 .photo-info {
+  
 }
 .photo-info__close-btn {
   display: none;
@@ -328,6 +329,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
+    overflow-y: auto;
   }
 
   .main__aside--active .photo-info__close-btn {

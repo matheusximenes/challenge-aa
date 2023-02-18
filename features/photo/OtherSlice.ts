@@ -22,20 +22,29 @@ export const photoSlice = createSlice({
   name: 'photos',
   initialState,
   reducers: {
-    setPhotos(state, action: PayloadAction<IPhoto[]>) {
-      state.photos = action.payload
+    setPhotos: (state, action: PayloadAction<IPhoto[]>) => {
+      return {
+        ...state,
+        photos: action.payload
+      }
     },
-    setSelectedPhoto(state, action: PayloadAction<IPhotoID | null>){
+    setSelectedPhoto: (state, action: PayloadAction<IPhotoID | null>) => {
       if(action.payload !== null) {
         const imgs = state.photos
         const index = imgs.findIndex(p => p.id === action.payload!.id)
-        state.selectedPhoto = imgs[index]
+        return {
+          ...state,
+          selectedPhoto: imgs[index]
+        }
       } else {
-        state.selectedPhoto = null
+        return {
+          ...state,
+          selectedPhoto: null
+        }
       }
       
     },
-    toggleFavorite(state, action: PayloadAction<IPhotoID>) {
+    toggleFavorite: (state, action: PayloadAction<IPhotoID>) => {
       const index = state.photos.findIndex(p => p.id === action.payload.id)
       state.photos[index].favorited = !state.photos[index].favorited;
       return {
@@ -43,24 +52,17 @@ export const photoSlice = createSlice({
         selectedPhoto: state.photos[index]
       }
     },
-    deletePhoto(state, action: PayloadAction<IPhotoID>) {
+    deletePhoto: (state, action: PayloadAction<IPhotoID>) => {
       const newPhotos = state.photos.filter(p => p.id !== action.payload.id)
-      return {
-        ...state,
-        photos: newPhotos,
-        selectedPhoto: null
-      }
+      state.photos = newPhotos;
+      state.selectedPhoto = null
     },
-    displayFavorite(state, action: PayloadAction<boolean>) {
+    displayFavorite: (state, action: PayloadAction<boolean>) => {
       state.displayFavorite = action.payload
-      return {
-        ...state,
-        displayFavorite: action.payload
-      }
     }
   },
 })
 
-export const { setPhotos, setSelectedPhoto, toggleFavorite, deletePhoto, displayFavorite } = photoSlice.actions
-export const statePhotos = createSelector((state: RootState) => state.photos, photos => photos)
+export const { setSelectedPhoto, toggleFavorite, displayFavorite } = photoSlice.actions
+export const state = createSelector((state: RootState) => state, (state: RootState) => state.photos)
 export default photoSlice.reducer

@@ -1,7 +1,7 @@
 import { describe, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Card from "../../components/Card";
-import { formatBytes } from "../../libs/files";
+import { formatBytes } from "../../utils/files";
 import ReduxProvider from "../../components/ReduxProvider";
 
 const CardProps = {
