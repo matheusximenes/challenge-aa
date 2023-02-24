@@ -7,9 +7,9 @@ import "./assets/css/main.css";
 import ReduxProvider from "./components/ReduxProvider";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  // <React.StrictMode>
+  <React.StrictMode>
   <ReduxProvider>
     <App />
   </ReduxProvider>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
