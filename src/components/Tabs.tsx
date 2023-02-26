@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { displayFavorite } from "../../features/photo/photosSlice";
+import { displayFavorite } from "./../features/photo/photosSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 

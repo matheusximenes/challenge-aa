@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { IPhoto } from "../../features/photo/types";
 import Card from "./Card";
-import { statePhotos } from "../../features/photo/photosSlice";
+import { statePhotos } from "./../features/photo/photosSlice";
 
 const CardsList = () => {
   const { photos, displayFavorite } = useSelector(statePhotos);

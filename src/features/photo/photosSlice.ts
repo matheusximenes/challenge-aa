@@ -1,7 +1,7 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { IPhoto } from './types'
-import { RootState } from '../../src/store'
+import { RootState } from "../../store"
 
 
 interface PhotosState {
@@ -38,25 +38,13 @@ export const photoSlice = createSlice({
     toggleFavorite(state, action: PayloadAction<IPhotoID>) {
       const index = state.photos.findIndex(p => p.id === action.payload.id)
       state.photos[index].favorited = !state.photos[index].favorited;
-      return {
-        ...state,
-        selectedPhoto: state.photos[index]
-      }
     },
     deletePhoto(state, action: PayloadAction<IPhotoID>) {
-      const newPhotos = state.photos.filter(p => p.id !== action.payload.id)
-      return {
-        ...state,
-        photos: newPhotos,
-        selectedPhoto: null
-      }
+      state.photos = state.photos.filter(p => p.id !== action.payload.id)
+      state.selectedPhoto = null
     },
     displayFavorite(state, action: PayloadAction<boolean>) {
       state.displayFavorite = action.payload
-      return {
-        ...state,
-        displayFavorite: action.payload
-      }
     }
   },
 })

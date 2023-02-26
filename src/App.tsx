@@ -4,7 +4,7 @@ import { RootState } from "./store";
 import Card from "./components/Card";
 import ImageInfo from "./components/ImageInfo";
 import { IPhoto } from "../features/photo/types";
-import { setPhotos } from "../features/photo/photosSlice";
+import { setPhotos } from "./features/photo/photosSlice";
 import Tabs from "./components/Tabs";
 import Spinner from "./components/Spinner";
 import { useFetch } from "./hooks/useFetch";

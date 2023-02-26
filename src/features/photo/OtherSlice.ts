@@ -1,7 +1,7 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { IPhoto } from './types'
-import { RootState } from '../../src/store'
+import { RootState } from "../../store"
 
 
 interface PhotosState {

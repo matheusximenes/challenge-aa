@@ -1,7 +1,7 @@
 import React from "react";
 import { formatBytes } from "../utils/files";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedPhoto } from "../../features/photo/photosSlice";
+import { setSelectedPhoto } from "./../features/photo/photosSlice";
 import { RootState } from "../store";
 import { IPhoto } from "../../features/photo/types";
 
@@ -13,7 +13,6 @@ type PropsCard = Pick<
 const Card = ({ id, url, description, filename, sizeInBytes }: PropsCard) => {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.photos);
-  console.log("Card");
   return (
     <div className="card">
       <button
