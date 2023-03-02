@@ -1,12 +1,12 @@
 import React from "react";
-import { IPhoto } from "../../features/photo/types";
+import { IPhoto } from "../features/photo/types";
 import { formatBytes } from "../utils/files";
 import { useDispatch, useSelector } from "react-redux";
-// import {
-//   deletePhoto,
-//   setSelectedPhoto,
-//   toggleFavorite,
-// } from "../../features/photo/photosSlice";
+import {
+  deletePhoto,
+  setSelectedPhoto,
+  toggleFavorite,
+} from "../features/photo/photosSlice";
 
 import { RootState } from "../store";
 import { formatDate } from "../utils/dates";
@@ -17,35 +17,39 @@ import Image from "../assets/iconography/image-solid.svg";
 import XMark from "../assets/iconography/xmark-solid.svg";
 
 const ImageInfo = () => {
-  // const { selectedPhoto } = useSelector((state: RootState) => state.photos);
+  const { selectedPhoto } = useSelector((state: RootState) => state.photos);
   const dispatch = useDispatch();
 
-  // if (!selectedPhoto) {
-  //   return (
-  //     <div className="photo-info--warn">
-  //       <img alt="" src={Image} />
-  //       <span>No Photo Selected!</span>
-  //     </div>
-  //   );
-  // }
+  if (!selectedPhoto) {
+    return (
+      <aside
+        className={`main__aside ${selectedPhoto ? `main__aside--active` : ``}`}
+      >
+        <div className="photo-info--warn">
+          <img alt="" src={Image} />
+          <span>No Photo Selected!</span>
+        </div>
+      </aside>
+    );
+  }
 
   const handleDeleteImage = () => {
-    // dispatch(deletePhoto({ id: selectedPhoto.id }));
+    dispatch(deletePhoto({ id: selectedPhoto.id }));
   };
 
   const toggleFavoriteImage = () => {
-    // dispatch(toggleFavorite({ id: selectedPhoto.id }));
+    dispatch(toggleFavorite({ id: selectedPhoto.id }));
   };
 
   const unselectImage = () => {
-    // dispatch(setSelectedPhoto(null));
+    dispatch(setSelectedPhoto(null));
   };
 
   return (
     <aside
-    // className={`main__aside ${selectedPhoto ? `main__aside--active` : ``}`}
+      className={`main__aside ${selectedPhoto ? `main__aside--active` : ``}`}
     >
-      {/* <div className="photo-info">
+      <div className="photo-info">
         <button
           className="photo-info__close-btn"
           onClick={unselectImage}
@@ -116,7 +120,7 @@ const ImageInfo = () => {
         <button className="photo-info__delete-btn" onClick={handleDeleteImage}>
           Delete
         </button>
-      </div> */}
+      </div>
     </aside>
   );
 };

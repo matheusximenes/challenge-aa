@@ -2,6 +2,12 @@ import { describe, expect } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import Tabs from "../../components/Tabs";
 import ReduxProvider from "../../components/ReduxProvider";
+import { store } from "../../store";
+
+enum tabsEnum {
+  recentlyAdded = "Recently Added",
+  favorited = "Favorited",
+}
 
 describe("<Tabs/> Component", () => {
   beforeEach(() => {
@@ -16,6 +22,14 @@ describe("<Tabs/> Component", () => {
       const tabs = screen.getAllByRole("tab");
       expect(tabs.length).toBe(2);
     });
+
+    it("should show initial stage of a tabs set", () => {
+      const tabs = screen.getAllByRole("tab", {
+        selected: true,
+        name: tabsEnum.recentlyAdded,
+      });
+      expect(tabs.length).toBe(1);
+    });
   });
 
   describe("features", () => {
@@ -23,15 +37,25 @@ describe("<Tabs/> Component", () => {
       const allTabs = screen.getAllByRole("tab");
       const tabs = screen.getAllByRole("tab", {
         selected: true,
-        name: "Recently Added",
+        name: tabsEnum.recentlyAdded,
       });
       expect(tabs.length).toBe(1);
       fireEvent.click(allTabs[1]);
       const tabsAfterClick = screen.getAllByRole("tab", {
         selected: true,
-        name: "Favorited",
+        name: tabsEnum.favorited,
       });
       expect(tabsAfterClick.length).toBe(1);
+    });
+
+    it("onClick 'favorited' tab should change the 'displayFavorite' value in photos store", () => {
+      const unSelectedTab = screen.getAllByRole("tab", {
+        selected: false,
+        name: tabsEnum.recentlyAdded,
+      });
+      fireEvent.click(unSelectedTab[0]);
+      const displayFavorite = store.getState().photos.displayFavorite;
+      expect(displayFavorite).toBe(false);
     });
   });
 

@@ -3,7 +3,7 @@ import { formatBytes } from "../utils/files";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedPhoto } from "./../features/photo/photosSlice";
 import { RootState } from "../store";
-import { IPhoto } from "../../features/photo/types";
+import { IPhoto } from "../features/photo/types";
 
 type PropsCard = Pick<
   IPhoto,

@@ -1,8 +1,10 @@
-import React, { useMemo } from "react";
+import React, { Suspense, useMemo } from "react";
 import { useSelector } from "react-redux";
-import { IPhoto } from "../../features/photo/types";
-import Card from "./Card";
+import { IPhoto } from "../features/photo/types";
 import { statePhotos } from "./../features/photo/photosSlice";
+import Spinner from "./Spinner";
+
+const Card = React.lazy(() => import("./Card"));
 
 const CardsList = () => {
   const { photos, displayFavorite } = useSelector(statePhotos);
@@ -27,14 +29,15 @@ const CardsList = () => {
   return (
     <div className="cards">
       {photosArray.map((p) => (
-        <Card
-          key={p.id}
-          id={p.id}
-          url={p.url}
-          description={p.description}
-          filename={p.filename}
-          sizeInBytes={p.sizeInBytes}
-        />
+        <Suspense key={p.id} fallback={<Spinner />}>
+          <Card
+            id={p.id}
+            url={p.url}
+            description={p.description}
+            filename={p.filename}
+            sizeInBytes={p.sizeInBytes}
+          />
+        </Suspense>
       ))}
     </div>
   );

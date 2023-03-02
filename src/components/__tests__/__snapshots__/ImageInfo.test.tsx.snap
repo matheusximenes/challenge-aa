@@ -1,0 +1,123 @@
+// Vitest Snapshot v1
+
+exports[`imageInfo Component > Snapshots > empty state 1`] = `
+<aside
+  className="main__aside main__aside--active"
+>
+  <div
+    className="photo-info"
+  >
+    <button
+      aria-label="Close tennessee_female_rubber.jpg Image Details"
+      className="photo-info__close-btn"
+      onClick={[Function]}
+    >
+      <img
+        alt="Close Icon"
+        src="/src/assets/iconography/xmark-solid.svg"
+      />
+    </button>
+    <div
+      className="photo-info__image"
+    >
+      <img
+        alt="Laboriosam eligendi inventore officia nemo. Quisquam explicabo voluptatem. Illo laborum facilis."
+        src="https://agencyanalytics-api.vercel.app/images/0.jpg"
+      />
+    </div>
+    <div
+      className="photo-info__small-data"
+    >
+      <div>
+        <h2>
+          tennessee_female_rubber.jpg
+        </h2>
+        <span>
+          4.59 MB
+        </span>
+      </div>
+      <button
+        aria-label="Unfavorite Image"
+        className="photo-info__favorite"
+        onClick={[Function]}
+      >
+        <img
+          alt="selectedPhoto.favorited ? \`favorited Image\` : \`No favorited Image\`"
+          src="/src/assets/iconography/heart_outlione.svg"
+        />
+      </button>
+    </div>
+    <h3
+      className="photo-info__heading"
+    >
+      Information
+    </h3>
+    <ul
+      className="photo-info__heading-list"
+    >
+      <li>
+        <div>
+          Uploaded by
+        </div>
+        <span>
+          Ms. Jimmie Cole
+        </span>
+      </li>
+      <li>
+        <div>
+          Created
+        </div>
+        <span>
+          July 15, 2017
+        </span>
+      </li>
+      <li>
+        <div>
+          Last Modified
+        </div>
+        <span>
+          December 16, 2022
+        </span>
+      </li>
+      <li>
+        <div>
+          Dimensions
+        </div>
+        <span>
+          4800
+           X
+           
+          3200
+        </span>
+      </li>
+      <li>
+        <div>
+          Resolution
+        </div>
+        <span>
+          72
+           X
+           
+          72
+        </span>
+      </li>
+    </ul>
+    <h3
+      className="photo-info__heading--description"
+    >
+      Description
+    </h3>
+    <p
+      className="photo-info__description"
+    >
+      Laboriosam eligendi inventore officia nemo. Quisquam explicabo voluptatem. Illo laborum facilis.
+    </p>
+    <button
+      className="photo-info__delete-btn"
+      onClick={[Function]}
+    >
+      Delete
+    </button>
+  </div>
+</aside>
+`;

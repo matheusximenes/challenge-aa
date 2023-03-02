@@ -1,8 +1,8 @@
 import  { store }  from "../../../store"
-import { deletePhoto, setPhotos, toggleFavorite } from "../photosSlice";
+import { deletePhoto, displayFavorite, setPhotos, setSelectedPhoto, toggleFavorite } from "../photosSlice";
 
 
-const MOCK_PHOTOS_DATA = [{
+export const MOCK_PHOTOS_DATA = [{
     "id": "74957345-6f5b-4d66-ae9d-5d0071b40279",
     "url": "https://agencyanalytics-api.vercel.app/images/0.jpg",
     "filename": "tennessee_female_rubber.jpg",
@@ -52,10 +52,37 @@ describe("Photo Slice", () => {
             expect(photos.length).toBe(0) 
         })
 
-       
     })
 
-    describe.skip("Display Favorite", () => {})
-    describe.skip("SelectedImage", () => {})
+    
+
+    describe("Display Favorite", () => {
+        it("should be false as initial state", () => {
+            const showFavorite = store.getState().photos.displayFavorite
+            expect(showFavorite).toBe(false)    
+        }) 
+
+        it("should toggle if passing the value", () => {
+            store.dispatch(displayFavorite(true));    
+            const showFavorite = store.getState().photos.displayFavorite
+            expect(showFavorite).toBe(true)    
+        }) 
+
+    })
+
+    describe("SelectedImage", () => {
+        it("should be null the initial state", () => {
+            const value = store.getState().photos.selectedPhoto;
+            expect(value).toBe(null)
+        })
+
+        it("should select a photo item on 'setSelectedPhoto' reducer ", () => {
+            store.dispatch(setPhotos(MOCK_PHOTOS_DATA))
+            store.dispatch(setSelectedPhoto({id: MOCK_PHOTOS_DATA[0].id}))
+            const value = store.getState().photos.selectedPhoto;
+            expect(value).toBe(MOCK_PHOTOS_DATA[0])
+
+        })
+    })
     
 })
